@@ -158,6 +158,8 @@ class EventWrapper:
         self.event.putString("_attribute_list", ' '.join(self.named_attr))
         self.finalized = True
 
+        return self.event
+
 
 class WorldWrapper:
     def __init__(self, World):

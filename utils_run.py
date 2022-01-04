@@ -26,7 +26,7 @@ if event.message[0] == '.':
 
     if script_name:
         try:    
-            JsMacros.runScript(script_name, params)
+            JsMacros.runScript(script_name, params.finalize())
             Chat.actionbar(f"Running script {script_name}", False)
         except Exception as e:
             Chat.actionbar(f"Failed to run script {script_name}", False)
