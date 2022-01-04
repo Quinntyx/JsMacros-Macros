@@ -20,7 +20,7 @@ if Hud.isContainer():
         try:
             with open(path, 'r') as f:
                 existing = json.loads(f.read())
-        except json.decoder.JSONDecodeError:
+        except FileNotFoundError:
             utils.ChatWrapper(Chat).log_fancy(f"No tracked chests so far on {world.server_address} in dimension {ctLib.id_to_name(world.dimension)}, starting new")
             existing = {}
 

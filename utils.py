@@ -44,6 +44,7 @@ class EventWrapper:
         while self[i]:
             yield self[i]
             i += 1
+        raise StopIteration
 
     def __len__(self):
         i = 0
@@ -95,7 +96,7 @@ class EventWrapper:
         name = str(name)
         self.finalized = False
         try:
-            self.put_key(type(value))(name, value)
+            self.put_key[type(value)](name, value)
         except KeyError:
             # putting object
             self.event.putObject(name, value)
