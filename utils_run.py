@@ -7,7 +7,7 @@ import utils
 
 script_filetypes = ['js', 'py']  # defines what types are considered scripts
 
-if event.message[0] == '.': 
+if event.message[0] == '0':
     msg = event.message[1:].split()
     scripts = []
     for i in os.listdir("./"): 
@@ -22,7 +22,7 @@ if event.message[0] == '.':
             break
 
     params = utils.EventWrapper(JsMacros.createCustomEvent("paramPasser"))
-    params.put_numeric_list()
+    params.smart_put_list(msg[1:])
 
     if script_name:
         try:    

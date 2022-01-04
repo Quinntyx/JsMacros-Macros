@@ -6245,111 +6245,111 @@
         "data": {
             "0": [
                 "minecraft:bone",
-                9
+                64
             ],
             "1": [
                 "minecraft:gunpowder",
-                5
+                64
             ],
             "2": [
                 "minecraft:rotten_flesh",
-                6
+                64
             ],
             "3": [
                 "minecraft:arrow",
-                2
+                64
             ],
             "4": [
-                "minecraft:air",
-                0
+                "minecraft:feather",
+                4
             ],
             "5": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "6": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "7": [
-                "minecraft:air",
-                0
+                "minecraft:iron_shovel",
+                1
             ],
             "8": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "9": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "10": [
-                "minecraft:air",
-                0
+                "minecraft:golden_chestplate",
+                1
             ],
             "11": [
-                "minecraft:air",
-                0
+                "minecraft:golden_leggings",
+                1
             ],
             "12": [
-                "minecraft:air",
-                0
+                "minecraft:gunpowder",
+                64
             ],
             "13": [
-                "minecraft:air",
-                0
+                "minecraft:iron_ingot",
+                3
             ],
             "14": [
-                "minecraft:air",
-                0
+                "minecraft:rotten_flesh",
+                64
             ],
             "15": [
-                "minecraft:air",
-                0
+                "minecraft:bone",
+                64
             ],
             "16": [
-                "minecraft:air",
-                0
+                "minecraft:arrow",
+                64
             ],
             "17": [
-                "minecraft:air",
-                0
+                "minecraft:cooked_chicken",
+                3
             ],
             "18": [
-                "minecraft:air",
-                0
+                "minecraft:golden_leggings",
+                1
             ],
             "19": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "20": [
-                "minecraft:air",
-                0
+                "minecraft:chainmail_boots",
+                1
             ],
             "21": [
-                "minecraft:air",
-                0
+                "minecraft:golden_boots",
+                1
             ],
             "22": [
-                "minecraft:air",
-                0
+                "minecraft:rotten_flesh",
+                64
             ],
             "23": [
-                "minecraft:air",
-                0
+                "minecraft:bone",
+                44
             ],
             "24": [
-                "minecraft:air",
-                0
+                "minecraft:leather_leggings",
+                1
             ],
             "25": [
-                "minecraft:air",
-                0
+                "minecraft:leather_boots",
+                1
             ],
             "26": [
-                "minecraft:air",
-                0
+                "minecraft:redstone",
+                6
             ]
         }
     },
@@ -6362,111 +6362,111 @@
         "data": {
             "0": [
                 "minecraft:arrow",
-                6
+                64
             ],
             "1": [
                 "minecraft:rotten_flesh",
-                3
+                64
             ],
             "2": [
                 "minecraft:gunpowder",
-                15
+                64
             ],
             "3": [
-                "minecraft:air",
-                0
+                "minecraft:cooked_chicken",
+                1
             ],
             "4": [
-                "minecraft:air",
-                0
+                "minecraft:bone",
+                64
             ],
             "5": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "6": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "7": [
-                "minecraft:air",
-                0
+                "minecraft:golden_helmet",
+                1
             ],
             "8": [
-                "minecraft:air",
-                0
+                "minecraft:rotten_flesh",
+                64
             ],
             "9": [
-                "minecraft:air",
-                0
+                "minecraft:carrot",
+                2
             ],
             "10": [
-                "minecraft:air",
-                0
+                "minecraft:arrow",
+                64
             ],
             "11": [
-                "minecraft:air",
-                0
+                "minecraft:bone",
+                64
             ],
             "12": [
-                "minecraft:air",
-                0
+                "minecraft:gunpowder",
+                64
             ],
             "13": [
-                "minecraft:air",
-                0
+                "minecraft:gunpowder",
+                64
             ],
             "14": [
-                "minecraft:air",
-                0
+                "minecraft:arrow",
+                64
             ],
             "15": [
-                "minecraft:air",
-                0
+                "minecraft:rotten_flesh",
+                64
             ],
             "16": [
-                "minecraft:air",
-                0
+                "minecraft:bow",
+                1
             ],
             "17": [
-                "minecraft:air",
-                0
+                "minecraft:leather_chestplate",
+                1
             ],
             "18": [
-                "minecraft:air",
-                0
+                "minecraft:bone",
+                64
             ],
             "19": [
-                "minecraft:air",
-                0
+                "minecraft:chainmail_helmet",
+                1
             ],
             "20": [
-                "minecraft:air",
-                0
+                "minecraft:arrow",
+                64
             ],
             "21": [
-                "minecraft:air",
-                0
+                "minecraft:gunpowder",
+                64
             ],
             "22": [
-                "minecraft:air",
-                0
+                "minecraft:chainmail_boots",
+                1
             ],
             "23": [
-                "minecraft:air",
-                0
+                "minecraft:iron_shovel",
+                1
             ],
             "24": [
-                "minecraft:air",
-                0
+                "minecraft:chainmail_chestplate",
+                1
             ],
             "25": [
-                "minecraft:air",
-                0
+                "minecraft:chainmail_leggings",
+                1
             ],
             "26": [
-                "minecraft:air",
-                0
+                "minecraft:rotten_flesh",
+                64
             ]
         }
     },

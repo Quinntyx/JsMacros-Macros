@@ -6,24 +6,26 @@ class EventWrapper:
     """
 
     """
-    put_key = {
-        str: self.event.putString,
-        int: self.event.putInt,
-        float: self.event.putDouble,
-        bool: self.event.putBoolean
-    }
-    get_key = {
-        str: self.event.getString,
-        int: self.event.getInt,
-        float: self.event.getDouble,
-        bool: self.event.getBoolean
-    }
 
     def __init__(self, event):
         self.event = event
         self.name = event.eventName
-        self.named_attr = self.event.getString("_attribute_list").split()
+        self.named_attr = str(self.event.getString("_attribute_list")).split()
+
         self.finalized = False
+
+        self.put_key = {
+            str: self.event.putString,
+            int: self.event.putInt,
+            float: self.event.putDouble,
+            bool: self.event.putBoolean
+        }
+        self.get_key = {
+            str: self.event.getString,
+            int: self.event.getInt,
+            float: self.event.getDouble,
+            bool: self.event.getBoolean
+        }
 
     def __getitem__(self, key):
         """Gets an item.
@@ -89,7 +91,7 @@ class EventWrapper:
         name = str(name)
         self.finalized = False
         try:
-            put_key(type(value))(name, value)
+            self.put_key(type(value))(name, value)
         except KeyError:
             # putting object
             self.event.putObject(name, value)
@@ -118,7 +120,7 @@ class EventWrapper:
     def smart_put(self, value):
         """Uses self.parse_put when it detects a '=' in the input, otherwise uses self.put_numeric
         """
-        if '=' in value:
+        if '=' or '{' in value:
             self.parse_put(value)
         else:
             self.put_numeric(value)
