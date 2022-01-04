@@ -7,7 +7,7 @@ import utils
 
 script_filetypes = ['js', 'py']  # defines what types are considered scripts
 
-if event.message[0] == '0':
+if event.message[0] == '.':
     msg = event.message[1:].split()
     scripts = []
     for i in os.listdir("./"): 
