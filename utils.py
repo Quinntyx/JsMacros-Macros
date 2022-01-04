@@ -32,7 +32,11 @@ class EventWrapper:
 
         @todo EventWrapper.__getitem__ | make support for automatic types, right now only supports string.
         """
-        return self.event.getString(str(key)), json.loads(self.event.getString(f"data_{key}"))
+        try:
+            data = json.loads(self.event.getString(f"data_{key}"))
+        except TypeError:
+            data = None
+        return self.event.getString(str(key)), data
 
     def __iter__(self):
         """Generator to iterate through numeric-keyed attributes """
@@ -120,7 +124,7 @@ class EventWrapper:
     def smart_put(self, value):
         """Uses self.parse_put when it detects a '=' in the input, otherwise uses self.put_numeric
         """
-        if '=' or '{' in value:
+        if '=' in value or '{' in value:
             self.parse_put(value)
         else:
             self.put_numeric(value)
