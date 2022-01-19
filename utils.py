@@ -1,5 +1,8 @@
 import time
 import json
+import sys
+
+# f = open(r"D:\MultiMC\instances\Eye Candy\.minecraft\config\jsMacros\Macros\logs\myout.txt", 'w')
 
 
 class EventWrapper:
@@ -27,54 +30,56 @@ class EventWrapper:
             bool: self.event.getBoolean
         }
 
+        self.data = {
+            "numeric": []
+        }
+
+    def load(self):
+        """
+        Loads the data in the event into self.data so it can be manipulated.
+
+        """
+        print("===== NYI NYI NYI =====")
+
     def __getitem__(self, key):
         """Gets an item.
 
         @todo EventWrapper.__getitem__ | make support for automatic types, right now only supports string.
+        @todo EventWrapper.__getitem__ | Add support for finalized wrappers.
         """
-        try:
-            data = json.loads(self.event.getString(f"data_{key}"))
-        except TypeError:
-            data = None
-        return self.event.getString(str(key)), data
+        return self.data[key]
 
     def __iter__(self):
-        """Generator to iterate through numeric-keyed attributes """
-        i = 0
-        while self[i]:
-            yield self[i]
-            i += 1
-        raise StopIteration
+        """Generator to iterate through numeric-keyed attributes. Only works on loaded instances. """
+        for i in self.data["numeric"]:
+            yield i
 
     def __len__(self):
-        i = 0
-        while self[i]:
-            i += 1
-        i += len(self.named_attr)
-        return i
+        return len(self.data) - 1 + len(self.data["numeric"])
 
     def iter_all(self):
-        """Generator to iterate through all attributes. Iterates through unnamed attributes first."""
-        i = 0
-        while self[i]:
-            yield self[i]
-            i += 1
-        for i in self.named_attr:
-            yield self[i]
+        """Generator to iterate through all attributes. Iterates through numeric-keyed attributes first.
+        Only works on loaded instances. """
+        for i in self.data["numeric"]:
+            yield i
+        for i in self.data.keys():
+            if i == "numeric":
+                continue
+            yield self.data[i]
 
     @property
     def numeric_length(self):
         """Returns the number of numeric-keyed attributes the event has."""
-        i = 0
-        while self[i]:
-            i += 1
-        return i
+        return len(self.data["numeric"])
 
     def join(self):
         return ' '.join([i for i in self])
 
+    def join_all(self):
+        return ' '.join([i for i in self.iter_all()])
+
     def unwrap(self):
-        """Returns the unwrapped event object"""
+        """Returns the unwrapped event object. Don't do this on an unfinalized event, you won't get anything."""
         return self.event
 
     def trigger(self, callback=None):
@@ -92,6 +97,13 @@ class EventWrapper:
         return self
 
     def put(self, value, name):
+        """Adds the value to data."""
+        if name.isdigit():
+            self.data['numeric'][int(name)] = value
+        else:
+            self.data[name] = value
+
+    def _put(self, value, name):
         """Attempts to divine the type of the value, and then calls the associated put function on the event"""
         name = str(name)
         self.finalized = False
@@ -106,28 +118,45 @@ class EventWrapper:
             self.named_attr.append(name)
         return self
 
-    def put_numeric(self, value):
-        self.put(self.numeric_length + 1, value)
+    def append(self, value):
+        self.data['numeric'].append(value)
         return self
+
+    def _place_data(self, value, name):
+        """DON'T TOUCH, INTERNAL METHOD FOR PLACING DATA"""
+        string = value.split('{')
+        try:
+            self.put(f"data_{name}", '{' + string[1])
+            return True
+        except IndexError:
+            return False
+
+    def _put_data(self, value, name):
+        """DON'T TOUCH, INTERNAL METHOD FOR APPENDING DATA TO data DICT"""
+        
 
     def parse_put(self, string):
         """Allows assigning a string attribute from chat using syntax name=value
 
         @todo EventWrapper.parse_put | make support for types other than string
         """
-        string = string.split('=')
-        if '{' in string[1]:
-            string[1] = string[1].split('{')[0]
-            self.put(f"data_{string[0]}", '{' + string[1].split('{')[1])
-        self.put(string[0], string[1])
+        if '=' in string:
+            string = string.split('=')
+            self._put_data(string[1], string[0])
+            self.put(string[0], string[1])
+        else:
+            self._place_data(str(self.numeric_length + 1), string)
+            self.put_numeric(string)
         return self
 
     def smart_put(self, value):
         """Uses self.parse_put when it detects a '=' in the input, otherwise uses self.put_numeric
         """
         if '=' in value or '{' in value:
+            f.write(f"Parsing {value}")
             self.parse_put(value)
         else:
+            f.write(f"Placing {value}")
             self.put_numeric(value)
         return self
 
@@ -144,6 +173,7 @@ class EventWrapper:
         """Places every item in value into a smart key as defined by event.smart_put
         """
         for value in values:
+            f.write(f"Adding {value} to list! ")
             self.smart_put(value)
 
     def put_dict(self, value_dict):
@@ -437,7 +467,7 @@ class LineWrapper:
         return self.line
 
 
-class FakeEvent:
+class EventStub:
     def __init__(self, attr):
         self.attr = attr
 

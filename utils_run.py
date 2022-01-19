@@ -1,6 +1,7 @@
 import sys
+
 if file.getParent() not in sys.path:
-    sys.path.append(file.getParent()) # making files importable
+    sys.path.append(file.getParent())  # making files importable
 
 import os
 import utils
@@ -15,7 +16,7 @@ if event.message[0] == '.':
     event.message = None  # overwrites message so it isn't sent to server.
     context.releaseLock()
     scripts = []
-    for i in os.listdir("./"): 
+    for i in os.listdir("./"):
         if '.' in i:
             if i.split('.')[1] in script_filetypes:
                 scripts.append(i.split('.'))
@@ -31,10 +32,10 @@ if event.message[0] == '.':
     # Chat.log(f"utils_run.py using script {script_name}")
 
     params = utils.EventWrapper(JsMacros.createCustomEvent("paramPasser"))
-    # Chat.log("utils_run.py instantiated EventWrapper params with name paramPasser")
+    Chat.log("utils_run.py instantiated EventWrapper params with name paramPasser")
 
     params.smart_put_list(msg[1:])
-    # Chat.log("utils_run.py added parameters to EventWrapper params")
+    Chat.log("utils_run.py added parameters to EventWrapper params")
 
     if script_name:
         # Chat.log("utils_run.py target script exists")

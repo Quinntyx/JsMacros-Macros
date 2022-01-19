@@ -1,6 +1,7 @@
 old_globals = dir()
 import sys
 import os
+# noinspection PyPep8
 from xyz.wagyourtail.jsmacros.core.library import BaseLibrary
 jsmacros_libs = type(os)('jsmacros')
 for attr in old_globals:

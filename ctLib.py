@@ -52,6 +52,7 @@ def name_to_id(name):
         return f"minecraft:{name}"
 
 
+# noinspection PyPep8Naming
 def id_to_name(ID):
     if ':' in ID:
         return ID.split(':')[1]

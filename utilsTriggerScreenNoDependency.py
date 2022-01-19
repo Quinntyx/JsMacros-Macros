@@ -1,22 +1,26 @@
 import sys
+
 if file.getParent() not in sys.path:
-    sys.path.append(file.getParent()) # making files importable
+    sys.path.append(file.getParent())  # making files importable
 
 import os
+
+
 def build_params(param, param_list):
     for n, i in enumerate(param_list):
         param.putString(str(n), i)
 
+
 script_filetypes = ['js', 'py']  # defines what types are considered scripts
 
-if event.message[0] == '.': 
+if event.message[0] == '.':
     msg = event.message[1:].split()
     scripts = []
-    for i in os.listdir("./"): 
+    for i in os.listdir("./"):
         if '.' in i:
             if i.split('.')[1] in script_filetypes:
                 scripts.append(i.split('.'))
-    
+
     script_name = ''
     for i in scripts:
         if f"u_{msg[0]}" == i[0]:
@@ -27,7 +31,7 @@ if event.message[0] == '.':
     build_params(params, msg[1:])
 
     if script_name:
-        try:    
+        try:
             JsMacros.runScript(script_name, params)
             Chat.actionbar(f"Running script {script_name}", False)
         except Exception as e:
@@ -35,5 +39,5 @@ if event.message[0] == '.':
             Chat.log(f"Error: {e}")
     else:
         Chat.actionbar(f"Script u_{msg} does not exist", False)
-    
-    event.message = None # overwrites message so it isn't sent to server. 
+
+    event.message = None  # overwrites message so it isn't sent to server.
