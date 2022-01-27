@@ -12,14 +12,14 @@ import os
 import json
 
 try:
-    with open('synthetic_main-config.json', 'r') as config:
+    with open('config/synthetic_main-config.json', 'r') as config:
         config = json.loads(config.read())
         directory = config['directory']  # default "./syntheticModules", defines the directory to look for scripts
         script_filetypes = config['filetypes']  # default ['js', 'py'], defines what types are considered scripts
         prefix = config['prefix']  # default ".", defines the prefix used for commands
         lang_key = config['lang_key']
 except FileNotFoundError:
-    with open('synthetic_main-config.json', 'w') as config:
+    with open('config/synthetic_main-config.json', 'w') as config:
         config.write(json.dumps({
             'directory': './syntheticModules/',
             'filetypes': [
