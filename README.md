@@ -30,4 +30,4 @@ To-Do
 
 License
 ---
-This is licensed under MPL 2.0, just like JsMacros is. 
+This is licensed under GPL 3.0. 
