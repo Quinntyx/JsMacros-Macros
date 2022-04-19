@@ -1,22 +1,18 @@
 # JsMacros-Macros
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg?style=flat-square)](https://github.com/FlareStormGaming/JsMacros-Macros/LICENSE)
 A collection of Macros for Minecraft. 
-***These macros rely on WagYourTail's JsMacros mod!*** 
+
+***These macros are for WagYourTail's JsMacros mod!*** 
 (JsMacros-Jython also, to use Jython for macro scripting)
 
-See here. 
+See dependencies below. 
 
-- https://www.curseforge.com/minecraft/mc-mods/jsmacros
-- https://www.curseforge.com/minecraft/mc-mods/jsmacros-jython
-- https://www.github.com/wagyourtail/JsMacros
+#
 
-***This is a collection of Minecraft Macros designed to make your life easier.***
-
-*Disclaimer: Many servers may consider these macros as conferring an "unfair advantage," or they may be seen as "cheating," "exploiting," or "hacking." Use at your
-own risk; be warned, many public servers ban for things like this.*
+*Disclaimer: This is a collection of Minecraft Macros designed to make your life easier. However, many servers may consider these macros as conferring an "unfair advantage," or they may be seen as "cheating," "exploiting," or "hacking." Use at your own risk. You may be kicked/banned from these servers.*
 
 
-To-Do
----
+## To-Do
 - Write a basic command parser library which navigates a folder command tree to enable management of subcommands. 
   - Use a service for this, as JsMacros onSendMessage events can cause stutter for computationally expensive events. 
 - Scrap everything in here because it's pointless and terrible and the exisitng synthetic command parser is not good
@@ -28,6 +24,15 @@ To-Do
   - Add a manager to register global methods for accessing services from scripts, and make it importable to python scripts in order to allow accessing these methods
   - Add a method to use `@JsMacros.on` above functions as a prettified frontend to `JsMacros.on()`
 
-License
----
+## Dependencies
+### [JsMacros](https://www.github.com/wagyourtail/jsmacros)
+  [![Download](https://img.shields.io/badge/Download-release-%2393c54b?style=flat-square)](https://www.curseforge.com/minecraft/mc-mods/jsmacros)
+  
+  JsMacros is a minecraft macro mod that provides an API for scripting behavior in Minecraft. 
+# 
+### [JsMacros-Jython](https://www.github.com/wagyourtail/jsmacros-jython)
+  [![Download](https://img.shields.io/badge/Download-release-%2393c54b?style=flat-square)](https://www.curseforge.com/minecraft/mc-mods/jsmacros-jython)
+#
+  An extension mod which provides Jython as an extension language for JsMacros. Extensively used for macros by yours truly, as Jython plays very well with Java (importing, etc.) and has comparable performance to JavaScript. 
+## License
 This is licensed under GPL 3.0. 
